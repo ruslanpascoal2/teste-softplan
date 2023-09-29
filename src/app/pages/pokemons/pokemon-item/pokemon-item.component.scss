@@ -1,0 +1,28 @@
+.pokemon-item {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 3rem;
+  background-color: var(--color-blue);
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.pokemon-info {
+  width: 100%;
+  padding: 1rem 2rem;
+  border-radius: 3rem;
+  background-color: var(--color-yellow);
+  min-height: 30px;
+}
+
+.pokemon-fav {
+  padding-left: 1rem;
+  ng-icon {
+    color: var(--color-yellow);
+  }
+}
+
+button{
+  min-width: fit-content;
+}

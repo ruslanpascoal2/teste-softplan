@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  --color-gray: #d9d9d9;
+  --color-blue: #3b87fa;
+  --color-yellow: #f2ca63;
+  --color-dark-red: #bd2727;
+  --color-light-red: #ff2222;
+}
+
+html,
+body {
+  background-color: var(--color-gray);
+}
+
+ng-icon {
+  display: flex !important;
+}
