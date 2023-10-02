@@ -1,0 +1,22 @@
+<div class="comment-input" [ngClass]="{'focused': isEditing}" *ngIf="comment" >
+  <div *ngIf="!isEditing" (click)="startEditing()" class="comment-container">
+    <span class="ml-2">{{ comment.text }}</span>
+  </div>
+  <input type="text" #inputEl [(ngModel)]="newComment" [hidden]="!isEditing" />
+  <ng-container *ngIf="isEditing; else initialState">
+    <button class="btn btn-comments mr-1" (click)="editDone()">
+      <ng-icon size="25" name="ionCheckmarkCircle"></ng-icon>
+    </button>
+    <button class="btn btn-delete" (click)="editDone(true)">
+      <ng-icon size="25" name="ionCloseCircle"></ng-icon>
+    </button>
+  </ng-container>
+  <ng-template #initialState>
+     <button class="btn btn-delete mr-1" (click)="startEditing()">
+      <ng-icon size="25" name="ionCreate"></ng-icon>
+    </button>
+    <button class="btn btn-delete" (click)="deleteComment()">
+      <ng-icon size="23" name="ionTrashOutline"></ng-icon>
+    </button>
+  </ng-template>
+</div>

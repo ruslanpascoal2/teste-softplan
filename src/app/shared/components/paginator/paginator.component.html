@@ -1,1 +1,12 @@
-<p>paginator works!</p>
+<!-- <div class="d-flex align-items-center paginator">
+  <button (click)="previous()" class="btn page-chevrons" [disabled]="currentPage <= 1">
+    <ng-icon size="30" name="ionChevronBack"></ng-icon>
+  </button>
+  <button (click)="pageClick(page)" class="btn page-button" *ngFor="let page of pagesToShow">{{page.pageNumber + 1}}</button>
+  <button (click)="next()" class="btn page-chevrons" [disabled]="currentPage >= (total/pageSize)">
+    <ng-icon size="30" name="ionChevronForward"></ng-icon>
+  </button>
+</div>
+
+<pre>{{currentPage | json}}</pre> -->
+<pagination-controls (pageChange)="pageChange.emit($event)"></pagination-controls>

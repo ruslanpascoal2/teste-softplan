@@ -1,14 +1,21 @@
-<div class="pokemon-item mb-4">
-  <div class="pokemon-image"></div>
+<div class="pokemon-item mb-4" *ngIf="pokemon">
+  <div class="pokemon-image">
+    <img
+      [src]="pokemon.sprites.front_default"
+      [alt]="pokemon.name"
+      width="150"
+    />
+  </div>
   <div class="d-flex flex-column w-100">
-    <div class="pokemon-info mb-3">Nome do pokémon</div>
-    <div class="d-flex">
-      <div class="pokemon-info mr-3">nisi iste incidunt.</div>
-      <button class="btn btn-primary mr-3">Adicionar comentário</button>
-      <button class="btn btn-danger">Excluir comentário</button>
+    <div class="d-flex align-items-center">
+      <h2 class="mb-3 mr-2">
+        {{ pokemon.name | titlecase }}
+      </h2>
+      <h5 class="pokemon-id">#{{ pokemon.id }}</h5>
     </div>
+    <app-comments [pokemonId]="pokemon.id"></app-comments>
   </div>
-  <div class="pokemon-fav">
-    <ng-icon size="30" name="ionStarOutline"></ng-icon>
-  </div>
+  <a role="button" class="pokemon-fav" (click)="toggleFavorite(pokemon)">
+    <ng-icon size="30" [name]="pokemon.favorite ? 'ionStar' : 'ionStarOutline'"></ng-icon>
+  </a>
 </div>

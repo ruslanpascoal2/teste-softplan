@@ -7,6 +7,14 @@ import { PokemonFilterComponent } from './pokemon-filter/pokemon-filter.componen
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 import { PokemonItemComponent } from './pokemon-item/pokemon-item.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { PokemonFacade } from './state/pokemons.facade';
+import { StoreModule } from '@ngrx/store';
+import { pokemonsFeature } from './state/pokemons.state';
+import { PokemonEffects } from './state/pokemons.effects';
+import { EffectsModule } from '@ngrx/effects';
+import { CommentsComponent } from './comments/comments.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { CommentItemComponent } from './comments/comment-item/comment-item.component';
 
 
 @NgModule({
@@ -14,12 +22,20 @@ import { SharedModule } from 'src/app/shared/shared.module';
     PokemonsComponent,
     PokemonFilterComponent,
     PokemonListComponent,
-    PokemonItemComponent
+    PokemonItemComponent,
+    CommentsComponent,
+    CommentItemComponent
   ],
   imports: [
     CommonModule,
     PokemonsRoutingModule,
-    SharedModule
+    SharedModule,
+    NgxPaginationModule,
+    StoreModule.forFeature(pokemonsFeature),
+    EffectsModule.forFeature(PokemonEffects)
+  ],
+  providers: [
+    PokemonFacade,
   ]
 })
 export class PokemonsModule { }

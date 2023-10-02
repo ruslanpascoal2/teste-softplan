@@ -3,10 +3,15 @@
     <img src="../../../assets/logo.png" height="150" />
   </a>
   <app-pokemon-filter></app-pokemon-filter>
-  <app-pokemon-list>
-    <app-pokemon-item pokemon-item></app-pokemon-item>
-    <app-pokemon-item pokemon-item></app-pokemon-item>
-    <app-pokemon-item pokemon-item></app-pokemon-item>
-  </app-pokemon-list>
-  <app-paginator></app-paginator>
+  <ng-container *ngIf="totalPokemons$ | async as total">
+    <app-pokemon-list *ngIf="pokemons$ | async as pokemons">
+      <app-pokemon-item
+      pokemon-item
+      [pokemon]="pokemon"
+      *ngFor="let pokemon of pokemons | paginate: { itemsPerPage: 10, currentPage, totalItems: total }"
+      >
+    </app-pokemon-item>
+    </app-pokemon-list>
+    <app-paginator [total]="total" [currentPage]="currentPage" (pageChange)="onPageChange($event)"></app-paginator>
+  </ng-container>
 </div>

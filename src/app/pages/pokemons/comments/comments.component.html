@@ -1,0 +1,32 @@
+<div class="d-flex flex-column" *ngIf="comments$ | async as comments">
+  <ng-container *ngIf="comments.length > 0; else noComments">
+  <h6 class="comments-label">Comentários ({{ comments.length }})</h6>
+
+    <app-comment-item
+      *ngFor="let comment of comments"
+      [comment]="comment"
+      (edit)="editComment($event)"
+      (delete)="deleteComment($event)"
+    ></app-comment-item>
+  </ng-container>
+
+  <div [hidden]="!newComment" class="mb-3">
+    <app-comment-item
+      #newCommentItem
+      [comment]="newComment"
+      [isNewComment]="true"
+      (add)="addComment($event)"
+      (cancel)="newComment = undefined">
+    </app-comment-item>
+  </div>
+
+  <div class="actions">
+    <button class="btn" (click)="handleAddComment(newCommentItem)">
+      <ng-icon size="25" name="ionAdd"></ng-icon>
+      <span class="ml-2">Adicionar comentário</span>
+    </button>
+  </div>
+  <ng-template #noComments>
+
+  </ng-template>
+</div>

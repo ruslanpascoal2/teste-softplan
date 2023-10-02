@@ -1,0 +1,41 @@
+[data-theme="dark-cyan"] {
+  --card: #3e3e3e;
+  --card-lighter: color-mix(in srgb,var(--card), #fff 15%);
+  --text: #282928;
+  --background: #282928;
+  --infos: #6bc6d0;
+  --star: #ffcc00;
+  --actions: #6bc6d0;
+  --actions-hover: #fff;
+  --paginator-buttons: #6bc6d0;
+  --paginator-text: #282928;
+  --paginator-chevrons: #575656;
+}
+
+[data-theme="default"] {
+  --card: #3b87fa;
+  --card-lighter: color-mix(in srgb,var(--card), #fff 15%);
+  --text: #282928;
+  --background: #f7f7f7;
+  --infos: #f2ca63;
+  --star: #ffcc00;
+  --actions: #fff;
+  --actions-hover: #f2ca63;
+  --paginator-buttons: #ff2222;
+  --paginator-text: #fff;
+  --paginator-chevrons: #282928;
+}
+
+[data-theme="squirtle"]{
+  --card: #372c9b;
+  --card-lighter: color-mix(in srgb, #372c9b, #fff 15%);
+  --text: #0d1439;
+  --background: #0d1439;
+  --infos: #c8ddf3;
+  --star: #ffcc00;
+  --actions: #fff;
+  --actions-hover: #f2ca63;
+  --paginator-buttons: #372c9b;
+  --paginator-text: #fff;
+  --paginator-chevrons: #434343;
+}

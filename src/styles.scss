@@ -1,16 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import "./_themes.scss";
 :root {
-  --color-gray: #d9d9d9;
+  --color-gray: #f7f7f7;
   --color-blue: #3b87fa;
   --color-yellow: #f2ca63;
   --color-dark-red: #bd2727;
   --color-light-red: #ff2222;
+
+  // --dodger-blue-50: #eff6ff;
+  // --dodger-blue-100: #daebff;
+  // --dodger-blue-200: #bedcff;
+  // --dodger-blue-300: #91c7ff;
+  // --dodger-blue-400: #5da8fd;
+  // --dodger-blue-500: #3b87fa;
+  // --dodger-blue-600: #2165ef;
+  // --dodger-blue-700: #1950dc;
+  // --dodger-blue-800: #1b41b2;
+  // --dodger-blue-900: #1c3b8c;
+  // --dodger-blue-950: #162555;
+
 }
 
 html,
 body {
-  background-color: var(--color-gray);
+  background-color: var(--background);
 }
 
 ng-icon {
