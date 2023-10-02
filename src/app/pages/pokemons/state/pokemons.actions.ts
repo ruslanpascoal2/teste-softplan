@@ -15,5 +15,9 @@ export const PokemonsActions = createActionGroup({
     'Edit Comment': props<{ comment: Comment }>(),
     'Delete Comment': props<{ comment: Comment }>(),
     'Toggle Favorite': props<{ pokemon: Pokemon }>(),
+    'Page Change': props<{page: number}>(),
+    'Update Displayed Pokemons': props<{results: Pokemon[]}>(),
+    'Search': props<{terms: string}>(),
+    'Search Error':  props<{ error: Error }>(),
   },
 });

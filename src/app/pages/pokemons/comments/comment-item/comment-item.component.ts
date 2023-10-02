@@ -8,6 +8,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Comment } from '../comments.models';
+import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
+import { DeleteConfirmDialogComponent } from 'src/app/shared/components/delete-confirm-dialog/delete-confirm-dialog.component';
 
 @Component({
   selector: 'app-comment-item',
@@ -26,7 +28,10 @@ export class CommentItemComponent {
   newComment = '';
   isEditing = false;
 
-  constructor(private readonly cdRef: ChangeDetectorRef) {}
+  constructor(
+    private readonly cdRef: ChangeDetectorRef,
+    private readonly modalService: BsModalService
+  ) {}
 
   ngOnInit() {
     this.newComment = this.comment?.text || '';
@@ -42,11 +47,13 @@ export class CommentItemComponent {
     } else {
       if (this.isNewComment) this.cancel.emit();
     }
-    this.newComment = '';
     this.isEditing = false;
   }
 
   startEditing() {
+    if (this.comment) {
+      this.newComment = this.comment.text;
+    }
     this.isEditing = true;
     this.cdRef.detectChanges();
     if (this.inputEl) {
@@ -54,7 +61,17 @@ export class CommentItemComponent {
     }
   }
 
+  openDeleteConfirmation() {
+    let modalRef = this.modalService.show(
+      DeleteConfirmDialogComponent,
+      {class: 'modal-dialog-centered'}
+    );
+    modalRef.content?.onClose.subscribe((result) => {
+      result && this.deleteComment();
+    });
+  }
+
   deleteComment() {
-    this.delete.emit(this.comment)
+    this.delete.emit(this.comment);
   }
 }

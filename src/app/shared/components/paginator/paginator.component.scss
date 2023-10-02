@@ -1,9 +1,19 @@
 .page-button {
   border-radius: .5rem;
   background-color: var(--paginator-buttons);
-  color: var(--paginator-text);
+  color: var(--text);
 }
 
 .page-chevrons{
   color: var(--paginator-chevrons);
+}
+
+.paginator ::ng-deep .ngx-pagination  {
+  color: var(--text);
+  border-radius: .25rem;
+}
+
+.paginator ::ng-deep .ngx-pagination .current {
+  background: var(--card);
+  border-radius: .25rem;
 }

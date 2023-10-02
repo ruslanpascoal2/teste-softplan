@@ -12,16 +12,20 @@ import {
   ionCreate,
   ionPencilSharp,
   ionRemoveCircle,
-  ionTrashOutline
+  ionTrashOutline,
+  ionEyeOutline,
+  ionOpenOutline
 } from '@ng-icons/ionicons';
 import { PaginatorModule } from './components/paginator/paginator.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DeleteConfirmDialogComponent } from './components/delete-confirm-dialog/delete-confirm-dialog.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [DeleteConfirmDialogComponent],
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     NgIconsModule.withIcons({
       ionSearch,
       ionStarOutline,
@@ -33,10 +37,18 @@ import { FormsModule } from '@angular/forms';
       ionCreate,
       ionPencilSharp,
       ionRemoveCircle,
-      ionTrashOutline
+      ionTrashOutline,
+      ionEyeOutline,
+      ionOpenOutline
     }),
     PaginatorModule,
   ],
-  exports: [FormsModule, NgIconsModule, PaginatorModule],
+  exports: [
+    FormsModule,
+    ReactiveFormsModule,
+    NgIconsModule,
+    PaginatorModule,
+    DeleteConfirmDialogComponent,
+  ],
 })
 export class SharedModule {}

@@ -1,4 +1,4 @@
-:host{
+:host {
   width: 100%;
 }
 
@@ -10,7 +10,6 @@
   width: 100%;
 }
 
-
 button {
   min-width: fit-content;
 }
@@ -20,17 +19,23 @@ button {
   font-weight: 500;
 }
 
-.actions{
+.actions {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
 
-  button{
+  &.empty-comment{
+    background-color: var(--card-lighter);
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  button {
     display: flex;
     padding: 0;
     color: #fff;
-    &:hover{
+    &:hover {
       color: var(--star);
     }
   }

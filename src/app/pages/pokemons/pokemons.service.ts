@@ -13,12 +13,14 @@ export class PokemonsService {
   getPokemonList(page: number): Observable<PokemonListResponse> {
     const take = 10;
     const offset = page * take;
-    console.log(take, page, offset);
-
     return this.http.get<PokemonListResponse>(`${API}/pokemon?offset=${offset}&limit=${take}`);
   }
 
   getPokemonDetails(url: string): Observable<Pokemon> {
     return this.http.get<Pokemon>(url);
+  }
+
+  search(terms: string): Observable<Pokemon> {
+    return this.http.get<Pokemon>(`${API}/pokemon/${terms.trim()}`);
   }
 }

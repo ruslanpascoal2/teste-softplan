@@ -9,4 +9,11 @@
 </div>
 
 <pre>{{currentPage | json}}</pre> -->
-<pagination-controls (pageChange)="pageChange.emit($event)"></pagination-controls>
+<pagination-controls
+  class="paginator"
+  previousLabel="Anterior"
+  nextLabel="Próximo"
+  [maxSize]="5"
+  [directionLinks]="true"
+  (pageChange)="pageChange.emit($event)">
+</pagination-controls>

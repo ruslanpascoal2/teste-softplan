@@ -1,10 +1,15 @@
 <div class="pokemon-item mb-4" *ngIf="pokemon">
   <div class="pokemon-image">
     <img
+      [hidden]="loadingImg"
       [src]="pokemon.sprites.front_default"
       [alt]="pokemon.name"
       width="150"
+      (load)="imageLoaded($event)"
     />
+    <div class="spinner-border" role="status" *ngIf="loadingImg">
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
   <div class="d-flex flex-column w-100">
     <div class="d-flex align-items-center">
@@ -12,10 +17,14 @@
         {{ pokemon.name | titlecase }}
       </h2>
       <h5 class="pokemon-id">#{{ pokemon.id }}</h5>
+      <a role="button" class="pokemon-details-btn" (click)="toggleFavorite(pokemon)" >
+        <ng-icon size="25" name="ionOpenOutline"></ng-icon>
+        <span class="ml-2">Detalhes</span>
+      </a>
     </div>
     <app-comments [pokemonId]="pokemon.id"></app-comments>
   </div>
-  <a role="button" class="pokemon-fav" (click)="toggleFavorite(pokemon)">
-    <ng-icon size="30" [name]="pokemon.favorite ? 'ionStar' : 'ionStarOutline'"></ng-icon>
+  <a role="button" class="pokemon-fav" (click)="toggleFavorite(pokemon)" >
+    <ng-icon size="30" [name]="(isFav$ | async) ? 'ionStar' : 'ionStarOutline'"></ng-icon>
   </a>
 </div>

@@ -3,15 +3,25 @@
     <img src="../../../assets/logo.png" height="150" />
   </a>
   <app-pokemon-filter></app-pokemon-filter>
-  <ng-container *ngIf="totalPokemons$ | async as total">
-    <app-pokemon-list *ngIf="pokemons$ | async as pokemons">
-      <app-pokemon-item
-      pokemon-item
-      [pokemon]="pokemon"
-      *ngFor="let pokemon of pokemons | paginate: { itemsPerPage: 10, currentPage, totalItems: total }"
-      >
-    </app-pokemon-item>
-    </app-pokemon-list>
-    <app-paginator [total]="total" [currentPage]="currentPage" (pageChange)="onPageChange($event)"></app-paginator>
+  <ng-container *ngIf="!(loading$ | async); else loading">
+    <ng-container *ngIf="totalPokemons$ | async as total">
+        <app-pokemon-list *ngIf="pokemons$ | async as pokemons">
+          <app-pokemon-item
+            pokemon-item
+            [pokemon]="pokemon"
+            *ngFor="
+              let pokemon of pokemons
+                | paginate : { itemsPerPage: 10, currentPage, totalItems: total }
+            "
+          >
+          </app-pokemon-item>
+        </app-pokemon-list>
+      <app-paginator (pageChange)="onPageChange($event)"></app-paginator>
+    </ng-container>
   </ng-container>
 </div>
+<ng-template #loading>
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</ng-template>

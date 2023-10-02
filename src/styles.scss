@@ -23,9 +23,13 @@
 
 html,
 body {
-  background-color: var(--background);
+  background-color: var(--background) !important;
 }
 
 ng-icon {
   display: flex !important;
 }
+
+
+/* Importing Bootstrap SCSS file. */
+@import "./node_modules/bootstrap/scss/bootstrap";
