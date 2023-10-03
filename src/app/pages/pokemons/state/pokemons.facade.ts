@@ -18,6 +18,7 @@ export class PokemonFacade {
   openPokemon$ = this.store.select(pokemonsFeature.selectOpenPokemon);
   searchError$ = this.store.select(pokemonsFeature.selectSearchError);
   searchLoading$ = this.store.select(pokemonsFeature.selectIsLoadingSearch);
+  currentPage$ = this.store.select(pokemonsFeature.selectCurrentPage);
 
   constructor(private readonly store: Store<PokemonsState>) {}
 

@@ -2,18 +2,23 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PokemonsComponent } from './pokemons.component';
 import { PokemonFacade } from './state/pokemons.facade';
+import { BehaviorSubject } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 describe('PokemonsComponent', () => {
   let component: PokemonsComponent;
   let fixture: ComponentFixture<PokemonsComponent>;
   let pokemonFacadeMock = {
-    pageChange: jest.fn()
+    pageChange: jest.fn(),
   };
-
+  const activatedRouteStub = { queryParams: new BehaviorSubject<any>({}) };
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [PokemonsComponent],
-      providers: [{ provide: PokemonFacade, useValue: pokemonFacadeMock }],
+      providers: [
+        { provide: PokemonFacade, useValue: pokemonFacadeMock },
+        { provide: ActivatedRoute, useValue: activatedRouteStub },
+      ],
     });
     fixture = TestBed.createComponent(PokemonsComponent);
     component = fixture.componentInstance;

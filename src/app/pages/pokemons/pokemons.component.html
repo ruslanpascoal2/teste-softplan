@@ -1,17 +1,19 @@
 <div class="container">
-  <a role="button" class="mb-3">
+  <a role="button" class="mb-3" (click)="onPageChange(1)">
     <img src="../../../assets/logo.png" height="150" />
   </a>
+
   <app-pokemon-filter></app-pokemon-filter>
   <ng-container *ngIf="!(loading$ | async); else loading">
     <ng-container *ngIf="totalPokemons$ | async as total">
         <app-pokemon-list *ngIf="pokemons$ | async as pokemons">
+
           <app-pokemon-item
             pokemon-item
             [pokemon]="pokemon"
             *ngFor="
               let pokemon of pokemons
-                | paginate : { itemsPerPage: 10, currentPage, totalItems: total }
+                | paginate : { itemsPerPage: pageSize, currentPage, totalItems: total }
             "
           >
           </app-pokemon-item>

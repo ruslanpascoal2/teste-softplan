@@ -5,6 +5,8 @@ import { PokemonFacade } from '../state/pokemons.facade';
 import { Comment } from './comments.models';
 import { Observable, of } from 'rxjs';
 import { By } from '@angular/platform-browser';
+import { SharedModule } from '../../../shared/shared.module';
+import { CommentItemComponent } from './comment-item/comment-item.component';
 
 describe('CommentsComponent', () => {
   let component: CommentsComponent;
@@ -58,10 +60,14 @@ describe('CommentsComponent', () => {
       pokemonId: 213,
       text: 'comment',
     };
-    jest.spyOn(facade, 'getPokemonComments').mockReturnValue(of([mockComment, mockComment, mockComment]));
+    jest
+      .spyOn(facade, 'getPokemonComments')
+      .mockReturnValue(of([mockComment, mockComment, mockComment]));
     component.ngOnInit();
     fixture.detectChanges();
-    const comments = fixture.debugElement.queryAll(By.css('app-comment-item[test-id="comment-item"]'));
+    const comments = fixture.debugElement.queryAll(
+      By.css('app-comment-item[test-id="comment-item"]')
+    );
     expect(comments.length).toBe(3);
   });
 
@@ -76,7 +82,7 @@ describe('CommentsComponent', () => {
     component.ngOnInit();
     component.deleteComment(mockComment);
     expect(spy).toHaveBeenCalled();
-  })
+  });
   it('should call facade to add a comment', () => {
     const mockComment: Comment = {
       id: '1',
@@ -87,7 +93,7 @@ describe('CommentsComponent', () => {
     component.ngOnInit();
     component.addComment(mockComment);
     expect(spy).toHaveBeenCalled();
-  })
+  });
   it('should call facade to edit a comment', () => {
     const mockComment: Comment = {
       id: '1',
@@ -96,8 +102,7 @@ describe('CommentsComponent', () => {
     };
     const spy = jest.spyOn(facade, 'editComment');
     component.ngOnInit();
-    component.editComment(mockComment)
+    component.editComment(mockComment);
     expect(spy).toHaveBeenCalled();
-  })
-
+  });
 });

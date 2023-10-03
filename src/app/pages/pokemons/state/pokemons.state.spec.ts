@@ -17,6 +17,9 @@ describe('Pokemon Reducer', () => {
     totalSearch: 0,
     currentPage: 0,
     pokemonsToDisplay: [],
+    isLoadingSearch: false,
+    openPokemon: undefined,
+    searchError: false
   };
 
   const mockPokemon = () => {
