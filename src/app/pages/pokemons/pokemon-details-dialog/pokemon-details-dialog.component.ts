@@ -8,6 +8,7 @@ import { PokemonFacade } from '../state/pokemons.facade';
   selector: 'app-pokemon-details-dialog',
   templateUrl: './pokemon-details-dialog.component.html',
   styleUrls: ['./pokemon-details-dialog.component.scss'],
+  providers: [PokemonFacade]
 })
 export class PokemonDetailsDialogComponent {
   onClose: Subject<boolean> = new Subject();
