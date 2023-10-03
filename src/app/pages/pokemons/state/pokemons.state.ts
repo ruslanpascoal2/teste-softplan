@@ -12,6 +12,9 @@ export interface PokemonsState {
   totalSearch: number;
   currentPage: number;
   pokemonsToDisplay: Pokemon[];
+  openPokemon: Pokemon | undefined
+  searchError: boolean;
+  isLoadingSearch: boolean;
 }
 
 const initialState: PokemonsState = {
@@ -23,6 +26,9 @@ const initialState: PokemonsState = {
   totalSearch: 0,
   currentPage: 0,
   pokemonsToDisplay: [],
+  openPokemon: undefined,
+  searchError: false,
+  isLoadingSearch: false,
 };
 
 export const pokemonsFeature = createFeature({
@@ -38,6 +44,12 @@ export const pokemonsFeature = createFeature({
       ...state,
       pokemonsToDisplay: results,
       isLoading: false,
+      searchError: false,
+    })),
+    on(PokemonsActions.search, (state) => ({
+      ...state,
+      searchError: false,
+      isLoadingSearch: true
     })),
     on(PokemonsActions.searchSuccess, (state, { result }) => ({
       ...state,
@@ -45,6 +57,13 @@ export const pokemonsFeature = createFeature({
       currentPage: 0,
       totalSearch: 1,
       isLoading: false,
+      searchError: false,
+      isLoadingSearch: false,
+    })),
+    on(PokemonsActions.searchError, (state) => ({
+      ...state,
+      searchError: true,
+      isLoadingSearch: false,
     })),
     on(PokemonsActions.getPokemonList, (state) => ({
       ...state,
@@ -105,7 +124,15 @@ export const pokemonsFeature = createFeature({
         ...state,
         favs: _favs,
       };
-    })
+    }),
+    on(PokemonsActions.openPokemonDetails, (state, { pokemon }) => ({
+      ...state,
+      openPokemon: pokemon
+    })),
+    on(PokemonsActions.closePokemonDetails, (state) => ({
+      ...state,
+      openPokemon: undefined
+    })),
   ),
   extraSelectors: ({ selectTotal, selectTotalSearch }) => ({
     selectCurrentTotal: createSelector(
@@ -123,5 +150,8 @@ export const {
   selectTotal,
   selectComments,
   selectFavs,
-  selectCurrentTotal
+  selectCurrentTotal,
+  selectOpenPokemon,
+  selectSearchError,
+  selectIsLoadingSearch
 } = pokemonsFeature;

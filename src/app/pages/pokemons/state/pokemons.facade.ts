@@ -15,6 +15,9 @@ export class PokemonFacade {
   favs$ = this.store.select(pokemonsFeature.selectFavs);
   pokemons$ = this.store.select(pokemonsFeature.selectPokemonMap);
   pokemonsToDisplay$ = this.store.select(pokemonsFeature.selectPokemonsToDisplay);
+  openPokemon$ = this.store.select(pokemonsFeature.selectOpenPokemon);
+  searchError$ = this.store.select(pokemonsFeature.selectSearchError);
+  searchLoading$ = this.store.select(pokemonsFeature.selectIsLoadingSearch);
 
   constructor(private readonly store: Store<PokemonsState>) {}
 
@@ -64,6 +67,14 @@ export class PokemonFacade {
       return;
     }
     this.pageChange(0);
+  }
+
+  openPokemonDetails(pokemon: Pokemon){
+    this.store.dispatch(PokemonsActions.openPokemonDetails({pokemon}));
+  }
+
+  closePokemonDetails(){
+    this.store.dispatch(PokemonsActions.closePokemonDetails());
   }
 
 }

@@ -22,6 +22,6 @@ export class PokemonsService {
   }
 
   search(terms: string): Observable<Pokemon> {
-    return this.http.get<Pokemon>(`${API}/pokemon/${terms.trim()}`);
+    return this.http.get<Pokemon>(`${API}/pokemon/${terms}`);
   }
 }

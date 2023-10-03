@@ -1,18 +1,31 @@
 <div class="row justify-content-center">
   <div class="col-12">
     <form [formGroup]="form" (ngSubmit)="submit()">
-      <div class="input-group">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Pesquisar pokémon"
-          formControlName="filter"
-        />
-        <div class="input-group-append">
-          <button type="submit" class="input-group-text">
-            <ng-icon  size="20" name="ionSearch"></ng-icon>
-          </button>
+      <div class="form-group">
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Pesquisar pokémon"
+            formControlName="filter"
+            [ngClass]="{ 'error-input': error$ | async }"
+          />
+          <div *ngIf="loading$ | async; else searchIcon" class="input-group-append">
+            <button type="button" disabled class="input-group-text">
+              <div class="spinner-border"  role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </button>
+          </div>
+          <ng-template #searchIcon>
+            <button type="submit" class="input-group-text">
+              <ng-icon size="20" name="ionSearch"></ng-icon>
+            </button>
+          </ng-template>
         </div>
+        <small *ngIf="error$ | async" class="error-text">
+          Pokemon não encontrado.
+        </small>
       </div>
     </form>
   </div>

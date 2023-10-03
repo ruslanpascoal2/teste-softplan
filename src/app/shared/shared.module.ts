@@ -19,9 +19,10 @@ import {
 import { PaginatorModule } from './components/paginator/paginator.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeleteConfirmDialogComponent } from './components/delete-confirm-dialog/delete-confirm-dialog.component';
+import { ModalContainerComponent } from './components/modal-container/modal-container.component';
 
 @NgModule({
-  declarations: [DeleteConfirmDialogComponent],
+  declarations: [DeleteConfirmDialogComponent, ModalContainerComponent],
   imports: [
     CommonModule,
     FormsModule,

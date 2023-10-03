@@ -1,6 +1,6 @@
 [data-theme="dark"] {
   --card: #3e3e3e;
-  --card-lighter: color-mix(in srgb,var(--card), #fff 15%);
+  --card-lighter: color-mix(in srgb, var(--card), #fff 15%);
   --text: #fff;
   --background: #282928;
   --star: #ffcc00;
@@ -8,7 +8,7 @@
   --actions-hover: #ffcc00;
   --input: var(--card);
   --input-border: 1px solid var(--card);
-  --input-glow: 0 0 .15rem 0.2rem var(--card-lighter);
+  --input-glow: 0 0 0.15rem 0.2rem var(--card-lighter);
   --input-text: #fff;
   --search-btn: var(--card-lighter);
   --modal-background: var(--card-lighter);
@@ -16,7 +16,7 @@
 
 [data-theme="default"] {
   --card: #3b87fa;
-  --card-lighter: color-mix(in srgb,var(--card), #fff 15%);
+  --card-lighter: color-mix(in srgb, var(--card), #fff 15%);
   --text: #282928;
   --background: #e1e1e1;
   --star: #ffcc00;
@@ -24,24 +24,24 @@
   --actions-hover: #f2ca63;
   --input: #f7f7f7;
   --input-border: 1px solid lightgray;
-  --input-glow: 0 0 .15rem 0.2rem #3b87fa50;
+  --input-glow: 0 0 0.15rem 0.2rem #3b87fa50;
   --input-text: #282928;
   --search-btn: #e4e4e4;
   --modal-background: var(--background);
 }
 
-[data-theme="dark-blue"]{
-  --card: #18204a;
-  --card-lighter: #272d4d;
+[data-theme="dark-blue"] {
+  --card: #2c3145;
+  --card-lighter: #383e57;
   --text: #fff;
-  --background: #0d1439;
+  --background: #242736;
   --star: #ffcc00;
-  --actions: #fff;
+--actions: #fff;
   --actions-hover: #f2ca63;
-  --input: #18204a;
-  --input-border: 1px solid #18204a;
-  --input-glow: 0 0 .15rem 0.2rem #ffffff25;
+  --input: var(--card);
+  --input-border: 1px solid var(--card);
+  --input-glow: 0 0 0.15rem 0.2rem #ffffff25;
   --input-text: #fff;
-  --search-btn: #18204a;
+  --search-btn: var(--card);
   --modal-background: var(--card-lighter);
 }

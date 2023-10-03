@@ -1,13 +1,18 @@
 <div id="mock"></div>
 <div class="pokemon-item mb-4" *ngIf="pokemon">
-  <div class="pokemon-image">
+  <div class="pokemon-image mr-3">
     <img
+      *ngIf="!imageFailed; else imageFallback"
       [hidden]="loadingImg"
       [src]="pokemon.sprites.front_default"
       [alt]="pokemon.name"
       width="150"
       (load)="imageLoaded()"
+      (error)="imageError()"
     />
+    <ng-template #imageFallback>
+      <img width="150" src="../../../../assets/placeholder.png" />
+    </ng-template>
     <div class="spinner-border" role="status" *ngIf="loadingImg">
       <span class="sr-only">Loading...</span>
     </div>
@@ -18,14 +23,21 @@
         {{ pokemon.name | titlecase }}
       </h2>
       <h5 class="pokemon-id">#{{ pokemon.id }}</h5>
-      <a role="button" class="pokemon-details-btn" (click)="openDetails(pokemon)" >
+      <a
+        role="button"
+        class="pokemon-details-btn"
+        (click)="openDetails(pokemon)"
+      >
         <ng-icon size="25" name="ionOpenOutline"></ng-icon>
         <span class="ml-2">Detalhes</span>
       </a>
     </div>
     <app-comments [pokemonId]="pokemon.id"></app-comments>
   </div>
-  <a role="button" class="pokemon-fav" (click)="toggleFavorite(pokemon)" >
-    <ng-icon size="30" [name]="(isFav$ | async) ? 'ionStar' : 'ionStarOutline'"></ng-icon>
+  <a role="button" class="pokemon-fav" (click)="toggleFavorite(pokemon)">
+    <ng-icon
+      size="30"
+      [name]="(isFav$ | async) ? 'ionStar' : 'ionStarOutline'"
+    ></ng-icon>
   </a>
 </div>

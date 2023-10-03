@@ -1,16 +1,16 @@
-.pokemon-details-modal{
+.pokemon-details-modal {
   padding: 2rem;
   background-color: var(--modal-background);
   color: var(--text);
 }
 
-.moves-list{
+.moves-list {
   max-height: 300px;
   overflow: auto;
   list-style: none;
 }
 
-.btn-close{
+.btn-close {
   font-size: 32px;
   color: var(--text);
 }
@@ -21,4 +21,8 @@
   padding: 0.25rem 0.75rem;
   border-radius: 1rem;
   font-size: 18px;
+}
+
+h3 {
+  word-break: break-all;
 }
