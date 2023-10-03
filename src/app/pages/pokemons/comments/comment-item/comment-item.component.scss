@@ -46,13 +46,10 @@
   color: var(--actions);
 }
 
-.btn-comments:hover {
+.btn-delete:hover, .btn-comments:hover {
   color: var(--actions-hover);
 }
 
-.btn-delete:hover {
-  color: var(--actions-hover);
-}
 
 .focused{
   outline: 2px solid #fff;

@@ -8,9 +8,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Comment } from '../comments.models';
-import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
-import { DeleteConfirmDialogComponent } from 'src/app/shared/components/delete-confirm-dialog/delete-confirm-dialog.component';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { BsModalService} from 'ngx-bootstrap/modal';
+import { DeleteConfirmDialogComponent } from '../../../../shared/components/delete-confirm-dialog/delete-confirm-dialog.component';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({

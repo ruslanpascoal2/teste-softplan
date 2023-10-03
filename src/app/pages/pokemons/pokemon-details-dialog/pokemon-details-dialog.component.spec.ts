@@ -18,4 +18,6 @@ describe('PokemonDetailsDialogComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
 });

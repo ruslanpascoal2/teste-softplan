@@ -1,7 +1,6 @@
 import { createFeature, createReducer, createSelector, on } from '@ngrx/store';
 import { Pokemon } from '../pokemons.models';
 import { PokemonsActions } from './pokemons.actions';
-import { v4 as uuidv4 } from 'uuid';
 import { Comment } from '../comments/comments.models';
 
 export interface PokemonsState {

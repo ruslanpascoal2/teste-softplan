@@ -7,12 +7,12 @@
     <button class="btn btn-comments mr-1" (click)="editDone()">
       <ng-icon size="25" name="ionCheckmarkCircle"></ng-icon>
     </button>
-    <button class="btn btn-delete" (click)="editDone(true)">
+    <button class="btn btn-comments" test-id="btn-cancel" (click)="editDone(true)">
       <ng-icon size="25" name="ionCloseCircle"></ng-icon>
     </button>
   </ng-container>
   <ng-template #initialState>
-     <button class="btn btn-delete mr-1" (click)="startEditing()">
+     <button class="btn btn-comments mr-1" test-id="btn-edit-comment" (click)="startEditing()">
       <ng-icon size="25" name="ionCreate"></ng-icon>
     </button>
     <button class="btn btn-delete" (click)="openDeleteConfirmation()">

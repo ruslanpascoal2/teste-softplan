@@ -16,10 +16,8 @@ export class PokemonItemComponent {
   isFav$ = of(false);
   loadingImg = true;
 
-
   constructor(
     private readonly pokemonFacade: PokemonFacade,
-    private readonly router: Router,
     private readonly modalService: BsModalService
   ) {}
 

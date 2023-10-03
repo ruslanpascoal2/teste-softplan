@@ -13,7 +13,6 @@ export interface Pokemon {
   }
   moves: {move: Entity}[];
   types: {type: Entity}[];
-  favorite: boolean;
 }
 
 export interface Entity {

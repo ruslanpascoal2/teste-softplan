@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Pokemon, PokemonListResponse } from './pokemons.models';
 import { Observable } from 'rxjs';
-import { API } from 'src/enviroments';
+
+export const API = "https://pokeapi.co/api/v2";
 
 @Injectable({
   providedIn: 'root',
