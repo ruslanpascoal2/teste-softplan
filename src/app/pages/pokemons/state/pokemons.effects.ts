@@ -4,7 +4,7 @@ import { PokemonsService } from '../pokemons.service';
 import { PokemonsActions } from './pokemons.actions';
 import { catchError, exhaustMap, forkJoin, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { PokemonsState, pokemonsFeature } from './pokemons.state';
-import { Store } from '@ngrx/store';
+import { Action, Store } from '@ngrx/store';
 
 @Injectable()
 export class PokemonEffects {
@@ -45,25 +45,19 @@ export class PokemonEffects {
   getPokemonDetails$ = createEffect(() =>
     this.actions$.pipe(
       ofType(PokemonsActions.getPokemonListSuccess),
-      withLatestFrom(this.store$.select(pokemonsFeature.selectPokemonMap)),
-      exhaustMap(([{response}, pokemonMap]) => {
+      exhaustMap(({response}) => {
         const urls = response.results.map((result) => result.url);
         const serviceCalls = urls.map((url) =>
           this.pokemonsService.getPokemonDetails(url)
         );
         return forkJoin(serviceCalls).pipe(
           switchMap((pokemons) => {
-            const lastId = pokemons[pokemons.length - 1].id;
-            const actionsToDispatch = pokemons.map((p) =>
-              {
-                if(lastId === p.id){
-                  return PokemonsActions.updateDisplayedPokemons({results: pokemons})
-                }
-                return PokemonsActions.getPokemonSuccess({
+            const actionsToDispatch: Action[] = pokemons.map((p) =>
+                PokemonsActions.getPokemonSuccess({
                   pokemon: p
                 })
-              }
             );
+            actionsToDispatch.push(PokemonsActions.updateDisplayedPokemons({results: pokemons}));
             return actionsToDispatch;
           })
         );
@@ -77,7 +71,7 @@ export class PokemonEffects {
       exhaustMap(({ terms }) =>
         this.pokemonsService.search(terms).pipe(
           map((result) => {
-            return PokemonsActions.updateDisplayedPokemons({results: [result]});
+            return PokemonsActions.searchSuccess({result});
           }),
           catchError((err) => of(PokemonsActions.searchError(err)))
         )

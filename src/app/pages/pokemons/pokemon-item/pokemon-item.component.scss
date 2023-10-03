@@ -30,10 +30,14 @@ h2 {
 .pokemon-details-btn{
   display: flex;
   color: #fff;
-  background: #5899fb;
+  background: var(--card-lighter);
   margin: 0 0 0.5rem 1rem;
   padding: 0.25rem 0.75rem;
   border-radius: 0.75rem;
+
+  &:hover{
+    color: var(--star);
+  }
 }
 
 .pokemon-image{

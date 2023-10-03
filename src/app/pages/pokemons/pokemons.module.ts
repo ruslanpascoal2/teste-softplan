@@ -15,6 +15,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { CommentsComponent } from './comments/comments.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CommentItemComponent } from './comments/comment-item/comment-item.component';
+import { PokemonDetailsDialogComponent } from './pokemon-details-dialog/pokemon-details-dialog.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { CommentItemComponent } from './comments/comment-item/comment-item.compo
     PokemonListComponent,
     PokemonItemComponent,
     CommentsComponent,
-    CommentItemComponent
+    CommentItemComponent,
+    PokemonDetailsDialogComponent
   ],
   imports: [
     CommonModule,

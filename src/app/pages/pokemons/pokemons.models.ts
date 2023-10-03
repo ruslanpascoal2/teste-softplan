@@ -11,8 +11,14 @@ export interface Pokemon {
       }
     };
   }
-  type: string;
+  moves: {move: Entity}[];
+  types: {type: Entity}[];
   favorite: boolean;
+}
+
+export interface Entity {
+  name: string;
+  url: string;
 }
 
 export interface PokemonListResponse {

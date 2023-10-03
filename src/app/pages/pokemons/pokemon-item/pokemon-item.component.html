@@ -5,7 +5,7 @@
       [src]="pokemon.sprites.front_default"
       [alt]="pokemon.name"
       width="150"
-      (load)="imageLoaded($event)"
+      (load)="imageLoaded()"
     />
     <div class="spinner-border" role="status" *ngIf="loadingImg">
       <span class="sr-only">Loading...</span>
@@ -17,7 +17,7 @@
         {{ pokemon.name | titlecase }}
       </h2>
       <h5 class="pokemon-id">#{{ pokemon.id }}</h5>
-      <a role="button" class="pokemon-details-btn" (click)="toggleFavorite(pokemon)" >
+      <a role="button" class="pokemon-details-btn" (click)="openDetails(pokemon)" >
         <ng-icon size="25" name="ionOpenOutline"></ng-icon>
         <span class="ml-2">Detalhes</span>
       </a>

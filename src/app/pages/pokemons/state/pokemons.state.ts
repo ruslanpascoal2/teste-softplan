@@ -1,4 +1,4 @@
-import { createFeature, createReducer, on } from '@ngrx/store';
+import { createFeature, createReducer, createSelector, on } from '@ngrx/store';
 import { Pokemon } from '../pokemons.models';
 import { PokemonsActions } from './pokemons.actions';
 import { v4 as uuidv4 } from 'uuid';
@@ -6,18 +6,17 @@ import { Comment } from '../comments/comments.models';
 
 export interface PokemonsState {
   pokemonMap: {};
-  pokemons: Pokemon[];
   comments: Comment[];
   favs: number[];
   isLoading: boolean;
   total: number;
+  totalSearch: number;
   currentPage: number;
   pokemonsToDisplay: Pokemon[];
 }
 
 const initialState: PokemonsState = {
   pokemonMap: {},
-  pokemons: [],
   comments: [
     {
       id: uuidv4(),
@@ -28,6 +27,7 @@ const initialState: PokemonsState = {
   favs: [],
   isLoading: false,
   total: 0,
+  totalSearch: 0,
   currentPage: 0,
   pokemonsToDisplay: [],
 };
@@ -39,10 +39,18 @@ export const pokemonsFeature = createFeature({
     on(PokemonsActions.pageChange, (state, { page }) => ({
       ...state,
       currentPage: page,
+      totalSearch: 0
     })),
     on(PokemonsActions.updateDisplayedPokemons, (state, { results }) => ({
       ...state,
       pokemonsToDisplay: results,
+      isLoading: false,
+    })),
+    on(PokemonsActions.searchSuccess, (state, { result }) => ({
+      ...state,
+      pokemonsToDisplay: [result],
+      currentPage: 0,
+      totalSearch: 1,
       isLoading: false,
     })),
     on(PokemonsActions.getPokemonList, (state) => ({
@@ -106,22 +114,21 @@ export const pokemonsFeature = createFeature({
       };
     })
   ),
+  extraSelectors: ({ selectTotal, selectTotalSearch }) => ({
+    selectCurrentTotal: createSelector(
+      selectTotal,
+      selectTotalSearch,
+      (total, search) => search || total)
+  }),
 });
-
-const slicePokemonsIntoPages = (currentPage: number, pokemons: Pokemon[]) => {
-  const pageSize = 10;
-  let start = (currentPage - 1) * pageSize;
-  let end = (currentPage - 1) * pageSize + pageSize;
-  return pokemons.slice(start, end);
-};
 
 export const {
   name,
   reducer,
-  selectPokemons,
   selectPokemonMap,
   selectIsLoading,
   selectTotal,
   selectComments,
   selectFavs,
+  selectCurrentTotal
 } = pokemonsFeature;

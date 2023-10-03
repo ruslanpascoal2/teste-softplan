@@ -18,6 +18,7 @@ export const PokemonsActions = createActionGroup({
     'Page Change': props<{page: number}>(),
     'Update Displayed Pokemons': props<{results: Pokemon[]}>(),
     'Search': props<{terms: string}>(),
+    'Search Success': props<{result: Pokemon}>(),
     'Search Error':  props<{ error: Error }>(),
   },
 });

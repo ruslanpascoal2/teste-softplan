@@ -1,0 +1,24 @@
+.pokemon-details-modal{
+  padding: 2rem;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.moves-list{
+  max-height: 300px;
+  overflow: auto;
+  list-style: none;
+}
+
+.btn-close{
+  font-size: 32px;
+  color: var(--text);
+}
+
+.pokemon-id {
+  color: #fff;
+  background-color: var(--card-lighter);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 18px;
+}

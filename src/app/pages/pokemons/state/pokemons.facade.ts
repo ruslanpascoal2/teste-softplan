@@ -10,13 +10,11 @@ import { Pokemon } from '../pokemons.models';
 export class PokemonFacade {
 
   loading$ = this.store.select(pokemonsFeature.selectIsLoading);
-  totalPokemons$ = this.store.select(pokemonsFeature.selectTotal);
+  totalPokemons$ = this.store.select(pokemonsFeature.selectCurrentTotal);
   comments$ = this.store.select(pokemonsFeature.selectComments);
   favs$ = this.store.select(pokemonsFeature.selectFavs);
   pokemons$ = this.store.select(pokemonsFeature.selectPokemonMap);
   pokemonsToDisplay$ = this.store.select(pokemonsFeature.selectPokemonsToDisplay);
-
-  visitedPages = new Set<number>();
 
   constructor(private readonly store: Store<PokemonsState>) {}
 
@@ -58,7 +56,6 @@ export class PokemonFacade {
 
   pageChange(page: number){
     this.store.dispatch(PokemonsActions.pageChange({page}))
-    if(!this.visitedPages.has(page)) this.visitedPages.add(page);
   }
 
   filter(terms: string){
@@ -66,7 +63,7 @@ export class PokemonFacade {
       this.store.dispatch(PokemonsActions.search({terms}))
       return;
     }
-    this.getPokemons();
+    this.pageChange(0);
   }
 
 }

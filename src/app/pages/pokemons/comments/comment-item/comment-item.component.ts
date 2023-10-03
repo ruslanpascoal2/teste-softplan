@@ -10,6 +10,7 @@ import {
 import { Comment } from '../comments.models';
 import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import { DeleteConfirmDialogComponent } from 'src/app/shared/components/delete-confirm-dialog/delete-confirm-dialog.component';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-comment-item',
@@ -66,7 +67,11 @@ export class CommentItemComponent {
       DeleteConfirmDialogComponent,
       {class: 'modal-dialog-centered'}
     );
-    modalRef.content?.onClose.subscribe((result) => {
+    modalRef.content?.onClose
+    .pipe(
+      takeUntilDestroyed()
+    )
+    .subscribe((result) => {
       result && this.deleteComment();
     });
   }
