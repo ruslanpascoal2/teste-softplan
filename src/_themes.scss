@@ -11,13 +11,14 @@
   --input-glow: 0 0 .15rem 0.2rem var(--card-lighter);
   --input-text: #fff;
   --search-btn: var(--card-lighter);
+  --modal-background: var(--card-lighter);
 }
 
 [data-theme="default"] {
   --card: #3b87fa;
   --card-lighter: color-mix(in srgb,var(--card), #fff 15%);
   --text: #282928;
-  --background: #f7f7f7;
+  --background: #e1e1e1;
   --star: #ffcc00;
   --actions: #fff;
   --actions-hover: #f2ca63;
@@ -26,11 +27,12 @@
   --input-glow: 0 0 .15rem 0.2rem #3b87fa50;
   --input-text: #282928;
   --search-btn: #e4e4e4;
+  --modal-background: var(--background);
 }
 
 [data-theme="dark-blue"]{
-  --card: #372c9b;
-  --card-lighter: color-mix(in srgb, #372c9b, #fff 15%);
+  --card: #18204a;
+  --card-lighter: #272d4d;
   --text: #fff;
   --background: #0d1439;
   --star: #ffcc00;
@@ -40,5 +42,6 @@
   --input-border: 1px solid #18204a;
   --input-glow: 0 0 .15rem 0.2rem #ffffff25;
   --input-text: #fff;
-  --search-btn: #372c9b;
+  --search-btn: #18204a;
+  --modal-background: var(--card-lighter);
 }

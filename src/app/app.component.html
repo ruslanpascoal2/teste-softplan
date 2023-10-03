@@ -1,11 +1,17 @@
 <main class="container-fluid">
   <div class="p-3">
-    <select class="form-control w-auto" (change)="onThemeSwitchChange()" [(ngModel)]="theme">
-      <option value="default">Default</option>
-      <option value="dark">Dark</option>
-      <option value="dark-blue">Dark Blue</option>
-    </select>
+    <div class="d-flex align-items-center justify-content-end w-100">
+      <ng-icon size="25" class="theme-icon" name="ionColorPalette"></ng-icon>
+      <select
+        class="form-control w-auto"
+        (change)="onThemeSwitchChange()"
+        [(ngModel)]="theme"
+      >
+        <option value="default">Default</option>
+        <option value="dark">Dark</option>
+        <option value="dark-blue">Dark Blue</option>
+      </select>
+    </div>
     <router-outlet></router-outlet>
-    <router-outlet name="modal"></router-outlet>
   </div>
 </main>

@@ -14,7 +14,7 @@ import {
   ionRemoveCircle,
   ionTrashOutline,
   ionEyeOutline,
-  ionOpenOutline
+  ionOpenOutline,
 } from '@ng-icons/ionicons';
 import { PaginatorModule } from './components/paginator/paginator.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -39,7 +39,7 @@ import { DeleteConfirmDialogComponent } from './components/delete-confirm-dialog
       ionRemoveCircle,
       ionTrashOutline,
       ionEyeOutline,
-      ionOpenOutline
+      ionOpenOutline,
     }),
     PaginatorModule,
   ],

@@ -17,3 +17,11 @@
   background: var(--card);
   border-radius: .25rem;
 }
+
+.paginator ::ng-deep .ngx-pagination a {
+  &:hover{
+    background: var(--card-lighter);
+  }
+  border-radius: .25rem;
+}
+

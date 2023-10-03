@@ -17,13 +17,7 @@ export interface PokemonsState {
 
 const initialState: PokemonsState = {
   pokemonMap: {},
-  comments: [
-    {
-      id: uuidv4(),
-      pokemonId: 1,
-      text: 'ola',
-    },
-  ],
+  comments: [],
   favs: [],
   isLoading: false,
   total: 0,

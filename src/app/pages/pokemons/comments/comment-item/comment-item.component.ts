@@ -11,6 +11,7 @@ import { Comment } from '../comments.models';
 import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import { DeleteConfirmDialogComponent } from 'src/app/shared/components/delete-confirm-dialog/delete-confirm-dialog.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-comment-item',
@@ -28,6 +29,7 @@ export class CommentItemComponent {
 
   newComment = '';
   isEditing = false;
+  destroy$ = new Subject();
 
   constructor(
     private readonly cdRef: ChangeDetectorRef,
@@ -36,6 +38,11 @@ export class CommentItemComponent {
 
   ngOnInit() {
     this.newComment = this.comment?.text || '';
+  }
+
+  ngOnDestroy(){
+    this.destroy$.next(true);
+    this.destroy$.complete();
   }
 
   editDone(cancel = false) {
@@ -69,7 +76,9 @@ export class CommentItemComponent {
     );
     modalRef.content?.onClose
     .pipe(
-      takeUntilDestroyed()
+      takeUntil(
+        this.destroy$
+      )
     )
     .subscribe((result) => {
       result && this.deleteComment();
